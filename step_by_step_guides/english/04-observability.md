@@ -1,6 +1,6 @@
-# Spark and Iceberg Observability Hands on Lab
+# Spark and Iceberg Observability
 
-![alt text](../..../../img/spark-obs-sol-arch.png)
+![alt text](../../img/spark-obs-sol-arch.png)
 
 ## Objective
 
