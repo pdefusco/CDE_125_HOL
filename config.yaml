@@ -1,0 +1,3 @@
+user: <your-cdp-workload-user>
+vcluster-endpoint: <your-Jobs-API-URL>
+cdp-endpoint: https://api.us-west-1.cdp.cloudera.com
