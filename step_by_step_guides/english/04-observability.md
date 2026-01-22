@@ -20,39 +20,6 @@ Apache Spark provides insights for monitoring and troubleshooting via the Spark 
 
 You can run the labs in CDP DataHub, CDP Private Cloud Base (OnPrem) and CDE.
 
-### Setup: Pull and Run the Docker Container
-
-To run the image on your local machine,
-
-```
-docker run -p 8888:8888 pauldefusco/spark_observability_labs
-```
-
-If you're running any of the labs using CDE, the CDE CLI has already been installed in the container but you will have to configure it in order to submit your commands to your Virtual Cluster. Otherwise, you can skip the next section.
-
-#### Configure the CDE CLI.
-
-Open CDE's configurations and apply your Workload Username and Jobs API URL. You can find your Jobs API URL in your Virtual Cluster's Details Page.
-
-![alt text](../../img/jobs-api-url-1.png)
-
-![alt text](../../img/jobs-api-url-2.png)
-
-![alt text](../../img/cli-configs-1.png)
-
-![alt text](../../img/cli-configs-2.png)
-
-Next, generate a CDP access token and edit your CDP credentials.
-
-![alt text](../../img/usr-mgt-1.png)
-
-![alt text](../../img/usr-mgt-2.png)
-
-![alt text](../../img/usr-mgt-3.png)
-
-![alt text](../../img/cdp-credentials.png)
-
-
 ### Lab: CDE Iceberg Incremental Merge Into with Dynamic Skew
 
 #### Lab Summary
