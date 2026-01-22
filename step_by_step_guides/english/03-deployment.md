@@ -4,8 +4,8 @@
 
 ## Contents
 
-3. [Promote to higher env using API by replicating repo and redeploy](https://github.com/pdefusco/CDE_124_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-3-promote-to-higher-env-using-api-by-replicating-repo-and-redeploy)
-4. [Build Orchestration Pipeline with Airflow](https://github.com/pdefusco/CDE_124_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-4-build-orchestration-pipeline-with-airflow)
+3. [Promote to higher env using API by replicating repo and redeploy](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-3-promote-to-higher-env-using-api-by-replicating-repo-and-redeploy)
+4. [Build Orchestration Pipeline with Airflow](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-4-build-orchestration-pipeline-with-airflow)
 
 ## Lab 3. Promote to higher env using API by replicating repo and redeploy
 
@@ -17,7 +17,7 @@ Create and sync the same Git repo from the PRD Cluster. From now on, run the fol
 cde repository create \
   --name sparkAppRepoPrdUser001 \
   --branch main \
-  --url https://github.com/pdefusco/CDE_124_HOL.git \
+  --url https://github.com/pdefusco/CDE_125_HOL.git \
   --vcluster-endpoint <your-PRD-vc-jobs-api-url-here>
 ```
 
@@ -33,7 +33,7 @@ For example:
 cde repository create \
   --name sparkAppRepoPrdUser001 \
   --branch main \
-  --url https://github.com/pdefusco/CDE_124_HOL.git \
+  --url https://github.com/pdefusco/CDE_125_HOL.git \
   --vcluster-endpoint https://8wcx5dqp.cde-qngfhb5x.pdf-aw-c.a465-9q4k.cloudera.site/dex/api/v1
 ```
 
