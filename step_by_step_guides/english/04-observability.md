@@ -20,7 +20,7 @@ Apache Spark provides insights for monitoring and troubleshooting via the Spark 
 
 You can run the labs in CDP DataHub, CDP Private Cloud Base (OnPrem) and CDE.
 
-### Lab 0: Pull and Run the Docker Container
+### Setup: Pull and Run the Docker Container
 
 To run the image on your local machine,
 
@@ -53,7 +53,7 @@ Next, generate a CDP access token and edit your CDP credentials.
 ![alt text](../../img/cdp-credentials.png)
 
 
-### Lab 1: CDE Iceberg Incremental Merge Into with Dynamic Skew
+### Lab: CDE Iceberg Incremental Merge Into with Dynamic Skew
 
 #### Lab Summary
 
