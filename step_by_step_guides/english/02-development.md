@@ -16,14 +16,14 @@ We will prototype and test the Iceberg Merge Into and Incremental Read Operation
 Clone the GitHub repository in your local machine.
 
 ```
-git clone https://github.com/pdefusco/CDE_124_HOL.git
-cd CDE_124_HOL
+git clone https://github.com/pdefusco/CDE_125_HOL.git
+cd CDE_125_HOL
 ```
 
 Launch the Docker container.
 
 ```
-docker run -p 8888:8888 pauldefusco/cde_124_hol
+docker run -p 8888:8888 pauldefusco/cde_125_hol
 ```
 
 Launch the JupyterLab IDE in your browser by copy and pasting the provided url as shown below.
