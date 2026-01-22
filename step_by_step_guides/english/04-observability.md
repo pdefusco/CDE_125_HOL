@@ -63,25 +63,25 @@ Every run's batch load is randomly generated with different skew, distribution, 
 
 When you reproduce the lab in your Virtual Cluster you will see different job runtimes and trends from what is shown in the below screenshots. However, you can still follow along to learn how to leverage the Observability UI in general.
 
-If you'd like to review the code this is located in ```code/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py```.
+If you'd like to review the code this is located in ```observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py```.
 
 #### Step 1: Set up the pipeline.
 
 ```
 cde resource create \
-  --name spark_observability_hol
+  --name spark_observability_hol_user001
 
 cde resource create \
-  --name numpy \
+  --name numpy-user001 \
   --type python-env
 
 cde resource upload \
-  --name numpy \
+  --name numpy-user001 \
   --local-path requirements.txt
 
 cde resource upload \
-  --name spark_observability_hol \
-  --local-path code/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py
+  --name spark_observability_hol-user001 \
+  --local-path observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py
 ```
 
 Wait for the python environment build to complete. Then create the Incremental Read job.
@@ -92,20 +92,20 @@ Wait for the python environment build to complete. Then create the Incremental R
 
 ```
 cde job delete \
-  --name iceberg_merge_dynamic_incremental
+  --name iceberg_merge_dynamic_incremental_user001
 
 cde job create \
-  --name iceberg_merge_dynamic_incremental \
+  --name iceberg_merge_dynamic_incremental_user001 \
   --type spark \
   --application-file iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py \
-  --python-env-resource-name numpy \
-  --mount-1-resource spark_observability_hol \
+  --python-env-resource-name numpy-user001 \
+  --mount-1-resource spark_observability_hol_user001 \
   --executor-cores 4 \
   --executor-memory "8g" \
   --driver-cores 4 \
   --driver-memory "4g" \
-  --arg spark_catalog.default.dynamic_incremental_target_table_large_overlap \
-  --arg spark_catalog.default.dynamic_incremental_source_table_large_overlap \
+  --arg spark_catalog.default.target_table_user001 \
+  --arg spark_catalog.default.source_table_user001 \
   --conf spark.dynamicAllocation.minExecutors=1 \
   --conf spark.dynamicAllocation.maxExecutors=20 \
   --conf spark.sql.adaptive.enabled=False \
@@ -118,17 +118,17 @@ Run the following commands to set up the Airflow pipeline. Once it's created, th
 
 ```
 cde job delete \
-  --name dynamic-incremental-orch
+  --name dynamic-incremental-orch-user001
 
 cde resource upload \
-  --name spark_observability_hol \
+  --name spark_observability_hol_user001 \
   --local-path code/airflow_orch.py
 
 cde job create \
   --type airflow \
-  --name dynamic-incremental-orch \
+  --name dynamic-incremental-orch-user001 \
   --dag-file airflow_orch.py \
-  --mount-1-resource spark_observability_hol
+  --mount-1-resource spark_observability_hol_user001
 ```
 
 ![alt text](../../img/notebook-complete-cli.png)
