@@ -16,10 +16,6 @@ Cloudera Observability is a monitoring and troubleshooting tool for data pipelin
 
 Apache Spark provides insights for monitoring and troubleshooting via the Spark UI. However, this is hard to use and is not great if you are running repetitive Spark pipelines. Cloudera Observability allows you to track how your Spark applications perform over time and provides automated recommendations so you can track performance trends and act accordingly.
 
-## Requirements
-
-You can run the labs in CDP DataHub, CDP Private Cloud Base (OnPrem) and CDE.
-
 ### Lab: CDE Iceberg Incremental Merge Into with Dynamic Skew
 
 #### Lab Summary
