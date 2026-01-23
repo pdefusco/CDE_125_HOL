@@ -49,6 +49,7 @@ import logging
 
 dag_name = "Iceberg-Dynamic-Skew-Incremental-Load-Random-Overlap"
 logger = logging.getLogger(__name__)
+username = "user001"
 
 print("Using DAG Name: {}".format(dag_name))
 
@@ -74,56 +75,56 @@ start = DummyOperator(
 spark_job_1 = CDEJobRunOperator(
         task_id='iceberg-incremental-load-1',
         dag=dag,
-        job_name='iceberg_merge_dynamic_incremental', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='iceberg_merge_dynamic_incremental_'+username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 spark_job_2 = CDEJobRunOperator(
         task_id='iceberg-incremental-load-2',
         dag=dag,
-        job_name='iceberg_merge_dynamic_incremental', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='iceberg_merge_dynamic_incremental_'+username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 spark_job_3 = CDEJobRunOperator(
         task_id='iceberg-incremental-load-3',
         dag=dag,
-        job_name='iceberg_merge_dynamic_incremental', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='iceberg_merge_dynamic_incremental_'+username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 spark_job_4 = CDEJobRunOperator(
         task_id='iceberg-incremental-load-4',
         dag=dag,
-        job_name='iceberg_merge_dynamic_incremental', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='iceberg_merge_dynamic_incremental_'+username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 spark_job_5 = CDEJobRunOperator(
         task_id='iceberg-incremental-load-5',
         dag=dag,
-        job_name='iceberg_merge_dynamic_incremental', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='iceberg_merge_dynamic_incremental_'+username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 spark_job_6 = CDEJobRunOperator(
         task_id='iceberg-incremental-load-6',
         dag=dag,
-        job_name='iceberg_merge_dynamic_incremental', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='iceberg_merge_dynamic_incremental_'+username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 spark_job_7 = CDEJobRunOperator(
         task_id='iceberg-incremental-load-7',
         dag=dag,
-        job_name='iceberg_merge_dynamic_incremental', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='iceberg_merge_dynamic_incremental_'+username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
 spark_job_8 = CDEJobRunOperator(
         task_id='iceberg-incremental-load-8',
         dag=dag,
-        job_name='iceberg_merge_dynamic_incremental', #Must match name of CDE Spark Job in the CDE Jobs UI
+        job_name='iceberg_merge_dynamic_incremental_'+username, #Must match name of CDE Spark Job in the CDE Jobs UI
         trigger_rule='all_success',
         )
 
