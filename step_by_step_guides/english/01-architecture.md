@@ -16,7 +16,7 @@ In this section you will learn about CDE's flexible architecture and its main co
   * [CDE Sessions](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/01-architecture.md#cde-session)
   * [Apache Iceberg](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/01-architecture.md#apache-iceberg)
   * [CDE User Interface](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/01-architecture.md#cde-user-interface)
-* [Introductory Lab: Introductory Lab: CDE CLI and Your First CDE Pipeline with Spark and Airflow]()
+* [Introductory Lab: Introductory Lab: CDE CLI and Your First CDE Pipeline with Spark and Airflow](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/01-architecture.md#introductory-lab-cde-cli-and-your-first-cde-pipeline-with-spark-and-airflow)
 * [Summary](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/01-architecture.md#summary)
 
 ## Introduction to the CDE Service
