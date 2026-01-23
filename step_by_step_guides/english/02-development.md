@@ -11,54 +11,7 @@ We will prototype and test the Iceberg Merge Into and Incremental Read Operation
 
 ## Lab 1. Spark Application Development
 
-#### Pull the Docker Container and Launch the IDE
-
-Clone the GitHub repository in your local machine.
-
-```
-git clone https://github.com/pdefusco/CDE_125_HOL.git
-cd CDE_125_HOL
-```
-
-Launch the Docker container.
-
-```
-docker run -p 8888:8888 pauldefusco/cde_125_hol
-```
-
-Launch the JupyterLab IDE in your browser by copy and pasting the provided url as shown below.
-
-![alt text](../../img/docker-container-launch.png)
-
-You now have access to all lab materials from the JupyterLab IDE in the left pane. From here, you can launch notebooks and run the terminal.
-
-![alt text](../../img/jl-home.png)
-
-You will use the terminal in the IDE to run the CDE CLI commands for the labs. First you need to configure the CLI and install Spark Connect though.
-
-#### Configure the CDE CLI and Install Spark Connect for CDE.
-
-Open CDE's configurations and apply your Workload Username and Jobs API URL. You can find your Jobs API URL in your Virtual Cluster's Details Page.
-
-![alt text](../../img/jobs-api-url-1.png)
-
-![alt text](../../img/jobs-api-url-2.png)
-
-![alt text](../../img/cli-configs-1.png)
-
-![alt text](../../img/cli-configs-2.png)
-
-Next, generate a CDP access token and edit your CDP credentials.
-
-![alt text](../../img/usr-mgt-1.png)
-
-![alt text](../../img/usr-mgt-2.png)
-
-![alt text](../../img/usr-mgt-3.png)
-
-![alt text](../../img/cdp-credentials.png)
-
-Finally, run the following commands to install the CDE Spark Connect tarballs.
+In the JupyterLab terminal, run the following commands to install the CDE Spark Connect tarballs.
 
 ```
 pip3 install cdeconnect.tar.gz  
@@ -314,12 +267,8 @@ A Spark Connect Session is a type of CDE Session that exposes the Spark Connect 
 
 Spark Connect allows you to connect remotely to the Spark clusters. Spark Connect is an API that uses the DataFrame API and unresolved logical plans as the protocol.
 
-In this section of the labs we reviewed an end to end developer framework using Spark Connect, the CDE CLI, and Apache Iceberg. You might also find the following articles and demos relevant:
+In this section of the labs we reviewed an end to end developer framework using Spark Connect, the CDE CLI, and Apache Iceberg.
 
-* [Installing the CDE CLI](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli.html)
-* [Simple Introduction to the CDE CLI](https://github.com/pdefusco/CDE_CLI_Simple)
-* [CDE Concepts](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli-concepts.html)
-* [CDE CLI Command Reference](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli-reference.html)
 * [CDE Spark Connect](https://docs.cloudera.com/data-engineering/cloud/spark-connect-sessions/topics/cde-spark-connect-session.html)
 * [CDE Jobs API Reference](https://docs.cloudera.com/data-engineering/cloud/jobs-rest-api-reference/index.html)
 * [Using Apache Iceberg in CDE](https://docs.cloudera.com/data-engineering/cloud/manage-jobs/topics/cde-using-iceberg.html)
