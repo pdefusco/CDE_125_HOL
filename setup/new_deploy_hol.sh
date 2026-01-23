@@ -21,18 +21,18 @@ echo "##########################################################"
 
 echo "DELETE SETUP JOB"
 cde job delete \
-  --name cde124-hol-setup-job"-${demo}"
+  --name cde125-hol-setup-job"-${demo}"
 
 echo "CREATE FILE RESOURCE"
 cde resource delete \
-  --name cde124-hol-setup-fs"-${demo}"
+  --name cde125-hol-setup-fs"-${demo}"
 
 cde resource create \
-  --name cde124-hol-setup-fs"-${demo}" \
+  --name cde125-hol-setup-fs"-${demo}" \
   --type files
 
 cde resource upload \
-  --name cde124-hol-setup-fs"-${demo}" \
+  --name cde125-hol-setup-fs"-${demo}" \
   --local-path setup/utils.py \
   --local-path setup/setup.py
 
@@ -74,9 +74,9 @@ function loading_icon_env() {
 loading_icon_env "Python Env Build in Progress"
 
 echo "CREATE AND RUN SETUP JOB"
-cde job create --name cde124-hol-setup-job"-${demo}" \
+cde job create --name cde125-hol-setup-job"-${demo}" \
   --type spark \
-  --mount-1-resource cde124-hol-setup-fs"-${demo}" \
+  --mount-1-resource cde125-hol-setup-fs"-${demo}" \
   --application-file setup.py \
   --python-env-resource-name datagen-hol-setup-py"-${demo}" \
   --arg $max_participants \
@@ -84,7 +84,7 @@ cde job create --name cde124-hol-setup-job"-${demo}" \
   --arg $demo
 
 cde job run \
-  --name cde124-hol-setup-job"-${demo}" \
+  --name cde125-hol-setup-job"-${demo}" \
   --executor-memory "8g" \
   --executor-cores 4
 
@@ -97,7 +97,7 @@ function loading_icon_job() {
   trap "tput cnorm" EXIT
 
   while true; do
-    job_status=$(cde run list --filter 'job[like]%cde124-hol-setup-job-${demo}' | jq -r '[last] | .[].status')
+    job_status=$(cde run list --filter 'job[like]%cde125-hol-setup-job-${demo}' | jq -r '[last] | .[].status')
     if [[ $job_status == "succeeded" ]]; then
       echo "Setup Job Execution Completed"
       break
