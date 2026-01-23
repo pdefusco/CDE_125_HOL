@@ -2,7 +2,7 @@
 
 ## Objective
 
-In this section you will learn about CDE's flexible architecture and its main components.
+In this section you will learn about CDE's flexible architecture and its main components and run your first Spark, Iceberg and Airflow pipeline with the CDE CLI.
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@ In this section you will learn about CDE's flexible architecture and its main co
 * [Introductory Lab: Introductory Lab: CDE CLI and Your First CDE Pipeline with Spark and Airflow](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/01-architecture.md#introductory-lab-cde-cli-and-your-first-cde-pipeline-with-spark-and-airflow)
 * [Summary](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/01-architecture.md#summary)
 
-## Introduction to the CDE Service
+## Lab 1: Introduction to the CDE Service (Reading)
 
 Cloudera Data Engineering (CDE) is a service for Cloudera Data Platform that allows you to submit batch jobs to auto-scaling virtual clusters. CDE enables you to spend more time on your applications, and less time on infrastructure.
 
@@ -137,17 +137,11 @@ CDE supports Spark 3.5.1.
 
 To learn more about CDE Architecture please visit [Creating and Managing Virtual Clusters](https://docs.cloudera.com/data-engineering/cloud/manage-clusters/topics/cde-create-cluster.html) and [Recommendations for Scaling CDE Deployments](https://docs.cloudera.com/data-engineering/cloud/deployment-architecture/topics/cde-general-scaling.html)
 
-## Introductory Lab: CDE CLI and Your First CDE Pipeline with Spark and Airflow
+## Lab 2: CDE CLI and Your First CDE Pipeline with Spark and Airflow
 
-#### Lab Summary
+Review the code located in ```observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py```.
 
-In this lab you will create a Spark Iceberg Merge Into application that is orchestrated with Airflow. At every run, the application creates a synthetic dataset to simulate a new batch load and performs an upsert against the same Iceberg table.
-
-Every run's batch load is randomly generated with different skew, distribution, and cardinality. This is done on purpose in order to create abnormal executions that are flagged by Cloudera Observability (more on this in lab 4). The synthetic data is generated randomly, but it is parameterized to increasingly perform more relative updates and less relative inserts at every execution.
-
-If you'd like to review the code this is located in ```observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py```.
-
-#### Pull the Docker Container and Launch the IDE
+#### Step 1: Pull the Docker Container and Launch the IDE
 
 Clone the GitHub repository in your local machine.
 
@@ -172,7 +166,7 @@ You now have access to all lab materials from the JupyterLab IDE in the left pan
 
 You will use the terminal in the IDE to run the CDE CLI commands for the labs. First you need to configure the CLI and install Spark Connect though.
 
-#### Configure the CDE CLI
+#### Step 2: Configure the CDE CLI
 
 Open CDE's configurations and apply your Workload Username and Jobs API URL. You can find your Jobs API URL in your Virtual Cluster's Details Page.
 
@@ -194,7 +188,7 @@ Next, generate a CDP access token and edit your CDP credentials.
 
 ![alt text](../../img/cdp-credentials.png)
 
-#### Step 1: Set up the pipeline.
+#### Step 3: Set up the pipeline.
 
 ```
 cde resource create \
@@ -247,7 +241,7 @@ cde job create \
   --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
 ```
 
-#### Step 2: Run the Pipeline.
+#### Step 4: Run the Pipeline.
 
 Open ```observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py``` and familiarize yourself with the code. At line 52, update the ```username``` variable with your assigned user e.g. ```user001```.
 

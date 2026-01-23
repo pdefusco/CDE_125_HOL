@@ -2,12 +2,16 @@
 
 ![alt text](../../img/cicd-deployment.png)
 
-## Contents
+## Objective
 
-3. [Promote to higher env using API by replicating repo and redeploy](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-3-promote-to-higher-env-using-api-by-replicating-repo-and-redeploy)
-4. [Build Orchestration Pipeline with Airflow](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-4-build-orchestration-pipeline-with-airflow)
+In this section you will learn how to promote the Spark Application you previously developed into a separate CDE Virtual Cluster designated as Production.
 
-## Lab 3. Promote to higher env using API by replicating repo and redeploy
+## Table of Contents
+
+1. [Promote to higher env using API by replicating repo and redeploy](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-3-promote-to-higher-env-using-api-by-replicating-repo-and-redeploy)
+2. [Build Orchestration Pipeline with Airflow](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/03-deployment.md#lab-4-build-orchestration-pipeline-with-airflow)
+
+## Lab 1. Promote to higher env using API by replicating repo and redeploy
 
 Now that the job has succeeded, deploy it into your PRD cluster.
 
@@ -87,7 +91,7 @@ cde job run --name cde_spark_job_prd_user001 \
 
 ![alt text](../../img/move-job.png)
 
-## Lab 4. Build Orchestration Pipeline with Airflow
+## Lab 2. Build Orchestration Pipeline with Airflow
 
 Create the CDE Spark jobs. Notice these are categorized into Bronze, Silver and Gold following a Lakehouse Data Architecture.
 

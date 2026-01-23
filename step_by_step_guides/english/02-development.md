@@ -2,12 +2,16 @@
 
 ![alt text](../../img/spark-connect-slide.png)
 
-## Contents
+## Objective
+
+In this section you will learn how to interact with the CDE Virtual Cluster via CDE Sessions and Spark Connect in order to develop Spark Applications on a daily basis.
+
+You will also use the CDE CLI to run more advanced functions such as monitoring job status and working with CDE Repositories to migrate and sync code with external git repositories.
+
+## Table of Contents
 
 1. [Spark Application Development](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-1-spark-application-development).  
 2. [CDE Repositories, Jobs, and Monitoring](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-2-cde-repositories-jobs-and-monitoring).
-
-We will prototype and test the Iceberg Merge Into and Incremental Read Operations.
 
 ## Lab 1. Spark Application Development
 

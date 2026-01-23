@@ -4,120 +4,14 @@
 
 ## Objective
 
-This repository stores a growing list of Spark Observability use cases leveraging CDP DataHub, Cloudera Data Engineering and Cloudera Observability.
+In this section you will learn how to monitor, troubleshoot and improve your Spark applications following insights provided by Cloudera Observability.
 
-Thoroughout the labs you will learn how to monitor, troubleshoot and improve your Spark applications following insights provided by Cloudera Observability.
+## Table of Contents
 
-## Motivation
+1. [Spark Application Development](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-1-spark-application-development).  
+2. [CDE Repositories, Jobs, and Monitoring](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-2-cde-repositories-jobs-and-monitoring).
 
-Apache Spark is an open-source, fast, and powerful big data processing framework. It’s designed for large-scale data analytics and supports tasks like data transformation, machine learning, and real-time stream processing. In Cloudera you can run production Spark use cases at enterprise scale with Cloudera Data Engineering or Cloudera DataHub.
-
-Cloudera Observability is a monitoring and troubleshooting tool for data pipelines and workloads running on the Cloudera Data Platform (CDP). It provides visibility into system performance, resource usage, and job health, helping data teams optimize performance, detect issues, and ensure efficient operation across hybrid and multi-cloud environments.
-
-Apache Spark provides insights for monitoring and troubleshooting via the Spark UI. However, this is hard to use and is not great if you are running repetitive Spark pipelines. Cloudera Observability allows you to track how your Spark applications perform over time and provides automated recommendations so you can track performance trends and act accordingly.
-
-### Lab: CDE Iceberg Incremental Merge Into with Dynamic Skew
-
-#### Lab Summary
-
-In this lab you will monitor a Spark Iceberg Merge Into application that is run incrementally eight times via Airflow. At every run, the application creates a synthetic dataset to simulate a new batch load and performs an upsert against the same Iceberg table.
-
-Every run's batch load is randomly generated with different skew, distribution, and cardinality. This is done on purpose in order to create abnormal executions that are flagged by Cloudera Observability. The synthetic data is generated randomly, but it is parameterized to increasingly perform more relative updates and less relative inserts at every execution.
-
-When you reproduce the lab in your Virtual Cluster you will see different job runtimes and trends from what is shown in the below screenshots. However, you can still follow along to learn how to leverage the Observability UI in general.
-
-If you'd like to review the code this is located in ```observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py```.
-
-#### Step 1: Set up the pipeline.
-
-```
-cde resource create \
-  --name spark_observability_hol_user001 \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
-
-cde resource create \
-  --name numpy-user001 \
-  --type python-env \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
-
-cde resource upload \
-  --name numpy-user001 \
-  --local-path observability/requirements.txt \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
-
-cde resource upload \
-  --name spark_observability_hol_user001 \
-  --local-path observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
-```
-
-Wait for the python environment build to complete. Then create the Incremental Read job.
-
-![alt text](../../img/env-build-inprogress.png)
-
-![alt text](../../img/env-build-complete.png)
-
-```
-cde job delete \
-  --name iceberg_merge_dynamic_incremental_user001 \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
-
-cde job create \
-  --name iceberg_merge_dynamic_incremental_user001 \
-  --type spark \
-  --application-file iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py \
-  --python-env-resource-name numpy-user001 \
-  --mount-1-resource spark_observability_hol_user001 \
-  --executor-cores 4 \
-  --executor-memory "8g" \
-  --driver-cores 4 \
-  --driver-memory "4g" \
-  --arg spark_catalog.default.target_table_user001 \
-  --arg spark_catalog.default.source_table_user001 \
-  --conf spark.dynamicAllocation.minExecutors=1 \
-  --conf spark.dynamicAllocation.maxExecutors=20 \
-  --conf spark.sql.adaptive.enabled=False \
-  --conf spark.sql.shuffle.partitions=200 \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
-```
-
-#### Step 2: Run the Pipeline.
-
-Open ```observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py``` and familiarize yourself with the code. At line 52, update the ```username``` variable with your assigned user e.g. ```user001```.
-
-Next, use the following commands to set up the Airflow pipeline. Before running them, copy the commands to your notepad or notebook and update the username appended to each command with your assigned username e.g. ```user001```.
-
-Once created, the Airflow job  will run the merge into jobs incrementally.
-
-```
-cde job delete \
-  --name dynamic-incremental-orch-user001 \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
-
-cde resource upload \
-  --name spark_observability_hol_user001 \
-  --local-path observability/airflow_orch.py \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
-
-cde job create \
-  --type airflow \
-  --name dynamic-incremental-orch-user001 \
-  --dag-file airflow_orch.py \
-  --mount-1-resource spark_observability_hol_user001 \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
-```
-
-![alt text](../../img/notebook-complete-cli.png)
-
-Navigate to the CDE Job Runs page and validate that the Spark and Airflow jobs are running.
-
-![alt text](../../img/jobs-running-1.png)
-
-The Spark jobs pipeline will complete in about an hour. Once they have completed, you can move on to the next section.
-
-![alt text](../../img/job-runs-complete.png)
-
-#### Step 3: Navigate to the Observability UI and troubleshoot the pipeline.
+#### Step 1: Navigate to the Observability UI and troubleshoot the pipeline.
 
 In the Observability UI, locate your CDP Environment and drill down to your CDE Virtual Cluster expanding the tabs on the left side. In these screenshots the CDE Virtual Cluster is called "DEV". The click on "Spark" to land into the main Spark view.
 
