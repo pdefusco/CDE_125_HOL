@@ -46,7 +46,7 @@ cde resource upload \
   --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
 
 cde resource upload \
-  --name spark_observability_hol-user001 \
+  --name spark_observability_hol_user001 \
   --local-path observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py \
   --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
 ```
