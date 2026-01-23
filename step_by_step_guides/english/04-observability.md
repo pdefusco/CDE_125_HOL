@@ -83,7 +83,11 @@ cde job create \
 
 #### Step 2: Run the Pipeline.
 
-Run the following commands to set up the Airflow pipeline. Once it's created, the Airflow job  will run the merge into jobs incrementally.
+Open ```observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py``` and familiarize yourself with the code. At line 52, update the ```username``` variable with your assigned user e.g. ```user001```.
+
+Next, use the following commands to set up the Airflow pipeline. Before running them, copy the commands to your notepad or notebook and update the username appended to each command with your assigned username e.g. ```user001```.
+
+Once created, the Airflow job  will run the merge into jobs incrementally.
 
 ```
 cde job delete \
