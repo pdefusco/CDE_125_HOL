@@ -92,7 +92,7 @@ cde job delete \
 
 cde resource upload \
   --name spark_observability_hol_user001 \
-  --local-path code/airflow_orch.py \
+  --local-path observability/airflow_orch.py \
   --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
 
 cde job create \
