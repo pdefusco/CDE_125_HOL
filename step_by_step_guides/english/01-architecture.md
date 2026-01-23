@@ -273,7 +273,7 @@ Navigate to the CDE Job Runs page and validate that the Spark and Airflow jobs a
 
 ![alt text](../../img/jobs-running-1.png)
 
-The Spark jobs pipeline will complete in about an hour. Once they have completed, you can move on to the next section.
+The Spark jobs pipeline will complete in about an hour. You can move on to the next section and work on that while this runs.
 
 ![alt text](../../img/job-runs-complete.png)
 
