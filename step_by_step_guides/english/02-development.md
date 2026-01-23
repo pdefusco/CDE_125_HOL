@@ -62,7 +62,7 @@ Finally, run the following commands to install the CDE Spark Connect tarballs.
 
 ```
 pip3 install cdeconnect.tar.gz  
-pip3 install pyspark-3.5.1.tar.gz
+pip3 install pyspark-3.5.4.tar.gz
 ```
 
 ![alt text](../../img/install-deps.png)
