@@ -42,7 +42,7 @@ cde resource create \
 
 cde resource upload \
   --name numpy-user001 \
-  --local-path requirements.txt \
+  --local-path observability/requirements.txt \
   --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
 
 cde resource upload \
