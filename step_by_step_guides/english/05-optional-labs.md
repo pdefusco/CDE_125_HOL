@@ -12,17 +12,11 @@ In this section you will learn about Job and Resource ACL's, Iceberg WAP and Ice
 
 # Lab 1: CDE Job and Resource ACLs
 
+This feature is only available in CDE in Private Cloud.
+
 A resource in Cloudera Data Engineering is a named collection of files used by a job or a session. Resources can include application code, configuration files, custom Docker images, and Python virtual environment specifications (requirements.txt).
 
 CDE 1.24 introduces granular ACL's to prevent developers from utilizing and modifying resources in use by other users' Spark and Airflow jobs. The attached examples rely on the CDE CLI.
-
-### Background Info on CDE and the CLI
-
-CDE is the Cloudera Data Engineering Service, a containerized managed service for Cloudera Data Platform designed for Large Scale Batch and Streaming Pipelines with Spark, Airflow and Iceberg. It allows you to submit batch jobs to auto-scaling virtual clusters. As a Cloud-Native service, CDE enables you to spend more time on your applications, and less time on infrastructure.
-
-CDE allows you to create, manage, and schedule Apache Spark jobs without the overhead of creating and maintaining Spark clusters. With CDE, you define virtual clusters with a range of CPU and memory resources, and the cluster scales up and down as needed to run your Spark workloads, helping to control your cloud costs.
-
-CDE provides a command line interface (CLI) client. You can use the CLI to create and update jobs, view job details, manage job resources, run jobs, etc.
 
 ### Background Info on CDE Resources
 
@@ -43,14 +37,7 @@ User Access Management allows you to assign the roles and define who can access 
 
 Among other benefits, this brings CDE Admins and Users granular ACL's at the CDE Job and Resource level. CDE Users can leverage the CDE CLI to assign jobs and roles to specific roles in the cluster, thus preventing others from unexpectedly deleting or modifying spark pipelines unwantedly.
 
-### Requirements
-
-The following are required in order to reproduce these commands in your CDE environment:
-
-* A CDE Service on version 1.24 or above.
-* A working installation of the CDE CLI. Please follow [these instructions](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli.html) to install the CLI.
-
-### Example
+### Lab
 
 Create a CDE Files Resource with ACL
 
@@ -91,41 +78,18 @@ cde job run --name myPySparkJob\
 --arg propertiesFile_1.conf
 ```
 
-## Summary and Next Steps
+### Summary
 
-Cloudera Data Engineering (CDE) provides a command line interface (CLI) client. You can use the CLI to create and update jobs, view job details, manage job resources, run jobs, and so on.
+In Cloudera Data Engineering, Job ACLs and Resource ACLs control who can access and manage workloads. Job ACLs define which users or groups can view, run, edit, or delete data engineering jobs. Resource ACLs control access to underlying resources such as virtual clusters, databases, and compute resources.
 
-In this article we have reviewed some advanced use cases for the CLI. If you are using the CDE CLI you might also find the following articles and demos interesting:
-
-* [Installing the CDE CLI](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli.html)
-* [Simple Introduction to the CDE CLI](https://github.com/pdefusco/CDE_CLI_Simple)
-* [CDE CLI Demo](https://github.com/pdefusco/CDE_CLI_demo)
-* [CDE Concepts](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli-concepts.html)
-* [CDE CLI Command Reference](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli-reference.html)
-* [CDE CLI Spark Flag Reference](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli-spark-flag-reference.html)
-* [CDE CLI Airflow Flag Reference](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli-airflow-flag-reference.html)
-* [CDE CLI list command syntax reference](https://docs.cloudera.com/data-engineering/cloud/cli-access/topics/cde-cli-list-flag-reference.html)
-* [CDE Jobs API Reference](https://docs.cloudera.com/data-engineering/cloud/jobs-rest-api-reference/index.html)
+Together, these ACLs help ensure that only authorized users can run jobs or use specific resources, improving security and governance in the platform.
 
 
-# Lab 2: ICEBERG COMPACTION with Spark in CDE
+# Lab 2: Iceberg Compaction with Spark in CDE
 
-## Objective
+### Lab
 
-This article provides an introduction to Iceberg Table Compaction using Spark SQL in Cloudera Data Engineering (CDE). Compaction is the process of merging many small data files into fewer, larger ones to improve query performance and reduce metadata overhead. Over time, frequent inserts or streaming writes can fragment tables into thousands of small files and lead to slow reads.
-
-CDE Spark Data Engineers typically schedule compaction as a maintenance task using Iceberg’s built-in SQL procedures in order to keep data in optimal file sizes, ensuring efficient analytics and stable job performance.
-
-In this tutorial you will create a CDE Session and interact with Apache Iceberg tables in oreder to run compaction using PySpark.
-
-## Requirements
-
-* CDE Virtual Cluster of type "All-Purpose" running in CDE Service with version 1.23 or above, and Spark version 3.5 or above.
-* An installation of the CDE CLI is recommended but optional. In the steps below you will create the CDE Session using the CLI, but you can alternatively launch one using the UI, or run the same commands via Spark Connect.
-
-## Step by Step Instructions
-
-### Create Unevenly Distributed Data
+#### Create Unevenly Distributed Data
 
 Create CDE Depdendencies:
 
@@ -452,47 +416,10 @@ spark.sql("""
 
 Cloudera Data Engineering (CDE) and the broader Cloudera Data Platform (CDP) offer a powerful, scalable solution for building, deploying, and managing data workflows in hybrid and multi-cloud environments. CDE simplifies data engineering with serverless architecture, auto-scaling Spark clusters, and built-in Apache Iceberg support. Combined with CDP’s enterprise-grade security, governance, and flexibility across public and private clouds, these platforms enable organizations to efficiently process large-scale data while maintaining compliance, agility, and control over their data ecosystems.
 
-## Next Steps
 
-Here is a list of helpful articles and blogs related to Cloudera Data Engineering and Apache Iceberg:
+# Lab 3: Iceberg WAP in Cloudera Data Engineering
 
-- **Cloudera on Public Cloud 5-Day Free Trial**
-   Experience Cloudera Data Engineering through common use cases that also introduce you to the platform’s fundamentals and key capabilities with predefined code samples and detailed step by step instructions.
-   [Try Cloudera on Public Cloud for free](https://www.cloudera.com/products/cloudera-public-cloud-trial.html?utm_medium=sem&utm_source=google&keyplay=ALL&utm_campaign=FY25-Q2-GLOBAL-ME-PaidSearch-5-Day-Trial%20&cid=701Hr000001fVx4IAE&gad_source=1&gclid=EAIaIQobChMI4JnvtNHciAMVpAatBh2xRgugEAAYASAAEgLke_D_BwE)
-
-- **Cloudera Blog: Supercharge Your Data Lakehouse with Apache Iceberg**  
-   Learn how Apache Iceberg integrates with Cloudera Data Platform (CDP) to enable scalable and performant data lakehouse solutions, covering features like in-place table evolution and time travel.  
-   [Read more on Cloudera Blog](https://blog.cloudera.com/supercharge-your-data-lakehouse-with-apache-iceberg-in-cloudera-data-platform/)
-
-- **Cloudera Docs: Using Apache Iceberg in Cloudera Data Engineering**  
-   This documentation explains how Apache Iceberg is utilized in Cloudera Data Engineering to handle massive datasets, with detailed steps on managing tables and virtual clusters.  
-   [Read more in Cloudera Documentation](https://docs.cloudera.com/data-engineering/cloud/manage-jobs/topics/cde-using-iceberg.html)
-
-- **Cloudera Blog: Building an Open Data Lakehouse Using Apache Iceberg**  
-   This article covers how to build and optimize a data lakehouse architecture using Apache Iceberg in CDP, along with advanced features like partition evolution and time travel queries.  
-   [Read more on Cloudera Blog](https://blog.cloudera.com/how-to-use-apache-iceberg-in-cdp-open-lakehouse/)
-
-
-# Iceberg WAP
-
-CDP Data Engineering (CDE) is the only cloud-native service purpose-built for enterprise data engineering teams. Building on Apache Spark, Data Engineering is an all-inclusive data engineering toolset that enables orchestration automation with Apache Airflow, advanced pipeline monitoring, visual troubleshooting, and comprehensive management tools to streamline ETL processes across enterprise analytics teams.
-
-Apache Iceberg is an open table format format for huge analytic datasets. It provides features that, coupled with Spark as the compute engine, allows you to build data processing pipelines with dramatic gains in terms of scalability, performance, and overall developer productivity.
-
-CDE Provides native Iceberg support. With the release of CDE 1.20 the Spark Runtime has been updated with Apache Iceberg 1.3. This version introduces three features that provide great benefits to Data Engineers.
-
-1. Table Branching: ability to create independent lineages of snapshots, each with its own lifecycle.
-2. Table Tagging: ability to tag an Iceberg table snapshot.
-3. Table rollbacks: ability to technique reverse or “roll back” table to a previous state.
-
-## Requirements
-
-* CDE Virtual Cluster of type "All-Purpose" running in CDE Service with version 1.19 or above.
-* A working installation of the CDE CLI.
-
-## Step by Step Instructions
-
-### Prerequisites
+### Lab
 
 #### Create CDE Files Resource
 
@@ -637,10 +564,30 @@ The refs metadata table helps you understand and manage your table’s snapshot 
 spark.sql("SELECT * FROM SPARK_CATALOG.DEFAULT.CELL_TOWERS_{}.refs;".format(USERNAME)).show()
 ```
 
-## Summary & Next Steps
+### Summary
 
-CDE supports Apache Iceberg which provides a table format for huge analytic datasets in the cloud. Iceberg enables you to work with large tables, especially on object stores, and supports concurrent reads and writes on all storage media. You can use Cloudera Data Engineering virtual clusters running Spark 3 to interact with Apache Iceberg tables.
+CDE Provides native Iceberg support. Since the release of version 1.20, CDE introduces three Iceberg features that provide great benefits to Data Engineers.
 
-The Iceberg Metadata Layer can track snapshots under different paths or give particular snapshots a name. These features are respectively called table branching and tagging. Thanks to them, Iceberg Data Engineers can implement data pipelines with advanced isolation, reproducibility, and experimentation capabilities.
+1. Table Branching: ability to create independent lineages of snapshots, each with its own lifecycle.
+2. Table Tagging: ability to tag an Iceberg table snapshot.
+3. Table rollbacks: ability to technique reverse or “roll back” table to a previous state.
 
-Table-level rollbacks are a specific Iceberg feature that allows changes to a table to be reversed to a previous state. This capability provides extra-safety in a variety of scenarios during the implementation of new use cases in Production.
+## Next Steps
+
+Thank you and congratulations for making it all the way until the end!! Here are more helpful articles and blogs to continue your journey with Cloudera Data Engineering and Apache Iceberg:
+
+- **Cloudera on Public Cloud 5-Day Free Trial**
+   Experience Cloudera Data Engineering through common use cases that also introduce you to the platform’s fundamentals and key capabilities with predefined code samples and detailed step by step instructions.
+   [Try Cloudera on Public Cloud for free](https://www.cloudera.com/products/cloudera-public-cloud-trial.html?utm_medium=sem&utm_source=google&keyplay=ALL&utm_campaign=FY25-Q2-GLOBAL-ME-PaidSearch-5-Day-Trial%20&cid=701Hr000001fVx4IAE&gad_source=1&gclid=EAIaIQobChMI4JnvtNHciAMVpAatBh2xRgugEAAYASAAEgLke_D_BwE)
+
+- **Cloudera Blog: Supercharge Your Data Lakehouse with Apache Iceberg**  
+   Learn how Apache Iceberg integrates with Cloudera Data Platform (CDP) to enable scalable and performant data lakehouse solutions, covering features like in-place table evolution and time travel.  
+   [Read more on Cloudera Blog](https://blog.cloudera.com/supercharge-your-data-lakehouse-with-apache-iceberg-in-cloudera-data-platform/)
+
+- **Cloudera Docs: Using Apache Iceberg in Cloudera Data Engineering**  
+   This documentation explains how Apache Iceberg is utilized in Cloudera Data Engineering to handle massive datasets, with detailed steps on managing tables and virtual clusters.  
+   [Read more in Cloudera Documentation](https://docs.cloudera.com/data-engineering/cloud/manage-jobs/topics/cde-using-iceberg.html)
+
+- **Cloudera Blog: Building an Open Data Lakehouse Using Apache Iceberg**  
+   This article covers how to build and optimize a data lakehouse architecture using Apache Iceberg in CDP, along with advanced features like partition evolution and time travel queries.  
+   [Read more on Cloudera Blog](https://blog.cloudera.com/how-to-use-apache-iceberg-in-cdp-open-lakehouse/)
