@@ -168,6 +168,43 @@ You will use the terminal in the IDE to run the CDE CLI commands for the labs. F
 
 #### Step 2: Configure the CDE CLI
 
+The Cloudera Data Engineering (CDE) CLI is a command-line client for interacting with a CDE Virtual Cluster's Jobs API, letting you manage the
+full lifecycle of data engineering workloads without using the web UI.
+
+With it you can create, configure, run, schedule, and monitor Spark and Airflow jobs; submit one-off Spark applications or DAGs directly; and manage the resources (files, jars, Python environments, and custom runtimes) that those jobs depend on. It also supports interactive Spark sessions, Git-backed repositories, credentials, and backup/restore of jobs and resources for migration—while giving you fine-grained control over each run through commands to fetch logs, check status, wait for completion, debug, or kill executions.
+
+In short, the CDE CLI lets you deploy and operate your entire data pipeline programmatically, making it ideal for automation, CI/CD integration, and scripting repeatable workflows.
+
+┌──────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │    Group     │                                                         Description                                                         │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde job      │ Manage job definitions — create, update, run, list, describe, delete, clone, import, schedule. A job is a reusable           │
+  │              │ definition (Spark/Airflow) bound to a resource + config.                                                                     │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde run      │ Manage individual executions — list, describe, logs, wait, kill, debug, fg-status (fine-grained status), ui.                 │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde resource │ Manage resources (file/python/custom-runtime buckets) — create, upload/upload-archive, download, delete, list, describe,     │
+  │              │ list-events. This is where job files, jars, and Python envs live.                                                            │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde spark    │ submit — fire a one-off jar/py to Spark without creating a persisted job.                                                    │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde session  │ Interactive Spark/PySpark sessions — create, interact, statements, logs, kill.                                               │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde airflow  │ submit a DAG; manage Airflow python env (the *-pyenv commands are deprecated/private-cloud only).                            │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde          │ Git-backed repos — create, sync, download, update.                                                                           │
+  │ repository   │                                                                                                                              │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde          │ Manage credentials (experimental) — e.g. for Docker registries / repos.                                                      │
+  │ credential   │                                                                                                                              │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde backup   │ create / restore / list-archive for jobs + resources migration.                                                              │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde kerberos │ Kerberos auth (private cloud).                                                                                               │
+  ├──────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ cde profile  │ show-active — inspect config profiles.                                                                                       │
+  └──────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
 Open CDE's configurations and apply your Workload Username and Jobs API URL. You can find your Jobs API URL in your Virtual Cluster's Details Page.
 
 ![alt text](../../img/jobs-api-url-1.png)
@@ -189,6 +226,8 @@ Next, generate a CDP access token and edit your CDP credentials.
 ![alt text](../../img/cdp-credentials.png)
 
 #### Step 3: Set up the pipeline.
+
+Run the following CDE CLI commands in order to run your first pipeline.
 
 ```
 cde resource create \
