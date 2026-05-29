@@ -12,6 +12,7 @@ You will also use the CDE CLI to run more advanced functions such as monitoring 
 
 1. [Spark Application Development](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-1-spark-application-development).  
 2. [CDE Repositories, Jobs, and Monitoring](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-2-cde-repositories-jobs-and-monitoring).
+3. [Using the Claude CLI with CDE Spark Connect]()
 
 ## Lab 1. Spark Application Development
 
@@ -25,6 +26,8 @@ pip3 install pyspark-3.5.4.tar.gz
 ![alt text](../../img/install-deps.png)
 
 #### Launch a CDE Spark Connect Session
+
+Spark Connect lets your notebook hold a lightweight, decoupled connection to a remote Spark runtime, so you get the responsiveness of local development—editing, running cells, and inspecting results in real time—while the heavy computation runs on the cluster.
 
 Start a CDE Session of type Spark Connect. Edit the Session Name parameter so it doesn't collide with other users' sessions. You will be prompted for your Workload Password. This is the same password you used to log into CDP.
 
@@ -66,6 +69,8 @@ username = <your-cdp-workload-username-here>
 ![alt text](../../img/runnotebook-1.png)
 
 #### Prototype the Spark & Iceberg Application as a Spark Submit
+
+Once an application is validated interactively, the same code can be promoted to a production-grade CDE job—using the CDE CLI to package resources, create the job, and run it on a Virtual Cluster on a schedule or on demand.
 
 On your terminal run the following commands to run your code as a Spark Submit. Make sure to edit the "vcluster-ednpoint" option according to your Virtual Cluster's Jobs API URL.
 
@@ -137,9 +142,7 @@ cde repository sync --name sparkAppRepoDevUser001 \
 
 #### Deploy using CLI
 
-Now create a CDE Spark job using the CDE Repository as a dependency.
-
-The files in the Repository are mounted and reachable by the Application at runtime.
+Now create a CDE Spark job using the CDE Repository as a dependency. The files in the Repository are mounted and reachable by the Application at runtime.
 
 Before executing the CLI commands, update the name, resource, and vcluster endpoint options according to your assigned username.
 
@@ -264,6 +267,13 @@ cde run list \
 ```
 
 ![alt text](../../img/cde-job-list-3.png)
+
+#### Using the Claude CLI with CDE Spark Connect
+
+Pairing the Claude CLI (Claude Code) with Spark Connect creates a fast, interactive development loop right inside a local IDE. By acting as an AI pair programmer, Claude can scaffold PySpark code, build Iceberg notebooks, explain DataFrame logic, debug errors, and refine transformations conversationally, all without leaving your editor.
+
+Because Claude is a general-purpose assistant, its usefulness extends well beyond Spark: it can help write documentation, automate CLI and shell tasks, generate test data, answer technical questions, draft and review code in any language, and orchestrate broader engineering work—making it a versatile companion across the entire development lifecycle.
+
 
 ## Summary and Next Steps
 
