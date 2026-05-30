@@ -276,7 +276,7 @@ Because Claude is a general-purpose assistant, its usefulness extends well beyon
 
 #### Requirements
 
-In order to complete this lab you need a Claude account. You can sign up for one or use one provided by your Cloudera Lab lead.
+In order to complete this lab you need a Claude account. You can sign up at http://www.claude.com or use an account provided by your Cloudera Lab lead.
 
 #### Setup
 
