@@ -315,11 +315,9 @@ Now follow the provided URL to obtain a Clade code, and then paste it  back in t
 
 ![alt text](../../img/claude-5.png)
 
-![alt text](../../img/claude-1.png)
+![alt text](../../img/claude-6.png)
 
 And finally, authorize access to this workspace.
-
-![alt text](../../img/claude-6.png)
 
 ![alt text](../../img/claude-7.png)
 
@@ -339,8 +337,11 @@ Next, use Claude to generate a new PySpark / Iceberg notebook:
 Generate a Jupyter Notebook similar to "Iceberg Time Travel PySpark Banking" but use features such as Iceberg partition evolution and schema evolution.
 ```
 
+![alt text](../../img/claude-8.png)
 
+![alt text](../../img/claude-9.png)
 
+![alt text](../../img/claude-10.png)
 
 ## Summary and Next Steps
 
