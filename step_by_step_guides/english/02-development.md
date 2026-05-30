@@ -268,11 +268,78 @@ cde run list \
 
 ![alt text](../../img/cde-job-list-3.png)
 
-#### Using the Claude CLI with CDE Spark Connect
+## Lab 3. Using the Claude CLI with CDE Spark Connect
 
 Pairing the Claude CLI (Claude Code) with Spark Connect creates a fast, interactive development loop right inside a local IDE. By acting as an AI pair programmer, Claude can scaffold PySpark code, build Iceberg notebooks, explain DataFrame logic, debug errors, and refine transformations conversationally, all without leaving your editor.
 
 Because Claude is a general-purpose assistant, its usefulness extends well beyond Spark: it can help write documentation, automate CLI and shell tasks, generate test data, answer technical questions, draft and review code in any language, and orchestrate broader engineering work—making it a versatile companion across the entire development lifecycle.
+
+#### Requirements
+
+In order to complete this lab you need a Claude account. You can sign up for one or use one provided by your Cloudera Lab lead.
+
+#### Setup
+
+Install the JupyterAI extension. In the terminal, run:
+
+```
+pip install jupyter-ai
+```
+
+Next, install Claude with:
+
+```
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+Finally, add it to your path:
+
+```
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+Run the Claude CLI:
+
+```
+claude
+```
+
+![alt text](../../img/claude-3.png)
+
+And pick option 2 - Subscription
+
+![alt text](../../img/claude-4.png)
+
+Now follow the provided URL to obtain a Clade code, and then paste it  back in the prompt:
+
+![alt text](../../img/claude-5.png)
+
+![alt text](../../img/claude-1.png)
+
+And finally, authorize access to this workspace.
+
+![alt text](../../img/claude-6.png)
+
+![alt text](../../img/claude-7.png)
+
+You are now in Claude's CLI prompt. As a test, ask it to "Explain the CDE CLI"
+
+```
+Explain the CDE CLI.
+```
+
+The output in your screen should look similar to this:
+
+![alt text](../../img/claude-2.png)
+
+Next, use Claude to generate a new PySpark / Iceberg notebook:
+
+```
+Generate a Jupyter Notebook similar to "Iceberg Time Travel PySpark Banking" but use features such as Iceberg partition evolution and schema evolution.
+```
+
+
 
 
 ## Summary and Next Steps
