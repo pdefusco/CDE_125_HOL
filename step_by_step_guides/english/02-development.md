@@ -12,7 +12,7 @@ You will also use the CDE CLI to run more advanced functions such as monitoring 
 
 1. [Spark Application Development](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-1-spark-application-development).  
 2. [CDE Repositories, Jobs, and Monitoring](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-2-cde-repositories-jobs-and-monitoring).
-3. [Using the Claude CLI with CDE Spark Connect]()
+3. [Using the Claude CLI with CDE Spark Connect](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/02-development.md#lab-3-using-the-claude-cli-with-cde-spark-connect)
 
 ## Lab 1. Spark Application Development
 
