@@ -244,27 +244,33 @@ cdp_private_key = KPt9IcJMb/R3Y4rxVv/-1234567890=
 
 You are now ready to use the CDE CLI.
 
+Set up the JOBS API URL for your DEV cluster as an environment variable:
+
+```
+export DEV_VCLUSTER_ENDPOINT=https://x7z4qt48.cde-jpxs9m6s.cf-cdp-e.a465-9q4k.cloudera.site/dex/api/v1
+```
+
 Run your frst pipeline with the following commands:
 
 ```
 cde resource create \
   --name spark_observability_hol_user001 \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $DEV_VCLUSTER_ENDPOINT
 
 cde resource create \
   --name numpy-user001 \
   --type python-env \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $DEV_VCLUSTER_ENDPOINT
 
 cde resource upload \
   --name numpy-user001 \
   --local-path observability/requirements.txt \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $DEV_VCLUSTER_ENDPOINT
 
 cde resource upload \
   --name spark_observability_hol_user001 \
   --local-path observability/iceberg_merge_skew_multikey_dynamic_incremental_random_overlap.py \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $DEV_VCLUSTER_ENDPOINT
 ```
 
 Wait for the python environment build to complete. Then create the Incremental Read job.
@@ -276,7 +282,7 @@ Wait for the python environment build to complete. Then create the Incremental R
 ```
 cde job delete \
   --name iceberg_merge_dynamic_incremental_user001 \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $DEV_VCLUSTER_ENDPOINT
 
 cde job create \
   --name iceberg_merge_dynamic_incremental_user001 \
@@ -294,7 +300,7 @@ cde job create \
   --conf spark.dynamicAllocation.maxExecutors=20 \
   --conf spark.sql.adaptive.enabled=False \
   --conf spark.sql.shuffle.partitions=200 \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $DEV_VCLUSTER_ENDPOINT
 ```
 
 #### Step 4: Run the Pipeline.
@@ -308,19 +314,19 @@ Once created, the Airflow job  will run the merge into jobs incrementally.
 ```
 cde job delete \
   --name dynamic-incremental-orch-user001 \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $DEV_VCLUSTER_ENDPOINT
 
 cde resource upload \
   --name spark_observability_hol_user001 \
   --local-path observability/airflow_orch.py \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $DEV_VCLUSTER_ENDPOINT
 
 cde job create \
   --type airflow \
   --name dynamic-incremental-orch-user001 \
   --dag-file airflow_orch.py \
   --mount-1-resource spark_observability_hol_user001 \
-  --vcluster-endpoint https://ngz58bzm.cde-tjp22mgj.pdf-jan.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $DEV_VCLUSTER_ENDPOINT
 ```
 
 ![alt text](../../img/notebook-complete-cli.png)

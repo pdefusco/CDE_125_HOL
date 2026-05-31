@@ -15,7 +15,13 @@ In this section you will learn how to promote the Spark Application you previous
 
 Now that the job has succeeded, deploy it into your PRD cluster.
 
-Create and sync the same Git repo from the PRD Cluster. From now on, run the following CLI commands with your PRD's cluster's Jobs API URL as the vcluster-endpoint parameter.
+Create and sync the same Git repo from the PRD Cluster.
+
+Set the Prod VC Jobs API URL as an environment variable. From now on, run the following CLI commands to deploy the jobs in PRD.
+
+```
+export PRD_VCLUSTER_ENDPOINT=https://rwzwmffs.cde-jpxs9m6s.cf-cdp-e.a465-9q4k.cloudera.site/dex/api/v1
+```
 
 ```
 cde repository create \
@@ -38,13 +44,13 @@ cde repository create \
   --name sparkAppRepoPrdUser001 \
   --branch main \
   --url https://github.com/pdefusco/CDE_125_HOL.git \
-  --vcluster-endpoint https://8wcx5dqp.cde-qngfhb5x.pdf-aw-c.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $PRD_VCLUSTER_ENDPOINT
 ```
 
 ```
 cde repository sync \
   --name sparkAppRepoPrdUser001 \
-  --vcluster-endpoint https://8wcx5dqp.cde-qngfhb5x.pdf-aw-c.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $PRD_VCLUSTER_ENDPOINT
 ```
 
 Then create a CDE Spark Job leveraging the CDE repository as a dependency.
@@ -77,8 +83,8 @@ cde job create --name cde_spark_job_prd_user001 \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file pyspark-app.py\
-  --vcluster-endpoint https://8wcx5dqp.cde-qngfhb5x.pdf-aw-c.a465-9q4k.cloudera.site/dex/api/v1 \
-  --arg s3a://pdf-aw-buk-aec7c095/data/cde-demo/bank/20251210 \
+  --vcluster-endpoint $PRD_VCLUSTER_ENDPOINT \
+  --arg s3a://cf-buk-7b7cacc6/data/cde-125-hol/bank/20260531 \
   --arg user001
 ```
 
@@ -86,7 +92,7 @@ cde job create --name cde_spark_job_prd_user001 \
 cde job run --name cde_spark_job_prd_user001 \
   --executor-cores 4 \
   --executor-memory "2g" \
-  --vcluster-endpoint https://8wcx5dqp.cde-qngfhb5x.pdf-aw-c.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $PRD_VCLUSTER_ENDPOINT
 ```
 
 ![alt text](../../img/move-job.png)
@@ -139,13 +145,13 @@ For example:
 cde job create --name cde_spark_job_bronze_user001 \
   --type spark \
   --arg user001 \
-  --arg s3a://pdf-aw-buk-aec7c095/data/cde-demo/bank/20251210 \
+  --arg s3a://cf-buk-7b7cacc6/data/cde-125-hol/bank/20260531 \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file de-pipeline-bank/spark/001_Lakehouse_Bronze.py\
-  --vcluster-endpoint https://8wcx5dqp.cde-qngfhb5x.pdf-aw-c.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $PRD_VCLUSTER_ENDPOINT
 ```
 
 ```
@@ -157,20 +163,20 @@ cde job create --name cde_spark_job_silver_user001 \
   --executor-cores 2 \
   --executor-memory "4g" \
   --application-file de-pipeline-bank/spark/002_Lakehouse_Silver.py\
-  --vcluster-endpoint https://8wcx5dqp.cde-qngfhb5x.pdf-aw-c.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $PRD_VCLUSTER_ENDPOINT
 ```
 
 ```
 cde job create --name cde_spark_job_gold_user001 \
   --type spark \
   --arg user001 \
-  --arg s3a://pdf-aw-buk-aec7c095/data/cde-demo/bank/20251210 \
+  --arg s3a://cf-buk-7b7cacc6/data/cde-125-hol/bank/20260531 \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --python-env-resource-name Python-Env-Shared \
   --executor-cores 2 \
   --executor-memory "4g" \
-  --application-file de-pipeline-bank/spark/003_Lakehouse_Gold.py\
-  --vcluster-endpoint https://8wcx5dqp.cde-qngfhb5x.pdf-aw-c.a465-9q4k.cloudera.site/dex/api/v1
+  --application-file de-pipeline-bank/spark/003_Lakehouse_Gold.py \
+  --vcluster-endpoint $PRD_VCLUSTER_ENDPOINT
 ```
 
 In your editor, open the Airflow DAG "004_airflow_dag_git" and edit your username variable at line 54.
@@ -194,7 +200,7 @@ cde job create --name airflow-orchestration-user001 \
   --type airflow \
   --mount-1-resource sparkAppRepoPrdUser001 \
   --dag-file de-pipeline-bank/airflow/004_airflow_dag_git.py\
-  --vcluster-endpoint https://8wcx5dqp.cde-qngfhb5x.pdf-aw-c.a465-9q4k.cloudera.site/dex/api/v1
+  --vcluster-endpoint $PRD_VCLUSTER_ENDPOINT
 ```
 
 ![alt text](../../img/jobs-cde.png)
