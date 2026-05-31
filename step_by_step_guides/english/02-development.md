@@ -89,7 +89,7 @@ For example:
 ```
 cde spark submit \
   pyspark-app.py \
-  --vcluster-endpoint https://tgsn9958.cde-qngfhb5x.pdf-aw-c.a465-9q4k.cloudera.site/dex/api/v1 \
+  --vcluster-endpoint $DEV_VCLUSTER_ENDPOINT \
   --executor-memory "4g" \
   --executor-cores 2 \
   s3a://cf-buk-7b7cacc6/data/cde-125-hol/bank/20260531 \
