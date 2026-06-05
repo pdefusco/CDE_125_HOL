@@ -203,7 +203,7 @@ Your cde config file should look something like this:
 
 ```
 user: pauldefusco
-vcluster-endpoint: https://x7z4qt48.cde-jpxs9m6s.cf-cdp-e.a465-9q4k.cloudera.site/dex/api/v1
+vcluster-endpoint: https://tckh2dlb.cde-h5d699bk.cotiviti.xfaz-gdb4.cloudera.site/dex/api/v1
 cdp-endpoint: https://api.us-west-1.cdp.cloudera.com
 ```
 
@@ -247,7 +247,7 @@ You are now ready to use the CDE CLI.
 Set up the JOBS API URL for your DEV cluster as an environment variable:
 
 ```
-export DEV_VCLUSTER_ENDPOINT=https://x7z4qt48.cde-jpxs9m6s.cf-cdp-e.a465-9q4k.cloudera.site/dex/api/v1
+export DEV_VCLUSTER_ENDPOINT=https://tckh2dlb.cde-h5d699bk.cotiviti.xfaz-gdb4.cloudera.site/dex/api/v1
 ```
 
 Run your frst pipeline with the following commands:
