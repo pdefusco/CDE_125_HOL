@@ -51,6 +51,8 @@ dag_name = "Iceberg-Dynamic-Skew-Incremental-Load-Random-Overlap"
 logger = logging.getLogger(__name__)
 username = "user001"
 
+dag_name = dag_name+"-"+username
+
 print("Using DAG Name: {}".format(dag_name))
 
 default_args = {
