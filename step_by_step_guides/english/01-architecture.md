@@ -316,6 +316,8 @@ Next, open ```airflow_orch.py``` and also familiarize yourself with the code.
 
 Next, use the following commands to set up the Airflow pipeline. Before running them, copy the commands to your notepad or notebook and update the username appended to each command with your assigned username e.g. ```user001```.
 
+As in the previous lab, don't forget to update the CLI commands to reflect your assigned user e.g. ```dynamic-incremental-orch-user001``` should become ```dynamic-incremental-orch-user002``` if you are ```user002```.
+
 Once created, the Airflow job  will run the merge into jobs incrementally.
 
 ```
