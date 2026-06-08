@@ -37,6 +37,8 @@ RUN chown -R cdeuser:cdeuser /home/cdeuser &&\
     chmod -R u+rw /home/cdeuser
 USER cdeuser
 
+RUN chmod 777 /usr/bin/cde
+
 EXPOSE 8888
 
 CMD ["bash", "-c", "jupyter-lab --ip='0.0.0.0' --port=8888 --no-browser"]
