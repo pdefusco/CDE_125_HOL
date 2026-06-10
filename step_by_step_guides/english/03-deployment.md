@@ -20,7 +20,7 @@ Create and sync the same Git repo from the PRD Cluster.
 Set the Prod VC Jobs API URL as an environment variable. From now on, run the following CLI commands to deploy the jobs in PRD.
 
 ```
-export PRD_VCLUSTER_ENDPOINT=https://rwzwmffs.cde-jpxs9m6s.cf-cdp-e.a465-9q4k.cloudera.site/dex/api/v1
+export PRD_VCLUSTER_ENDPOINT=https://jxz7dltq.cde-h5d699bk.cotiviti.xfaz-gdb4.cloudera.site/dex/api/v1
 ```
 
 ```
