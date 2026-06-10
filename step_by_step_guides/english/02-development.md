@@ -306,7 +306,7 @@ Run the Claude CLI:
 claude
 ```
 
-![alt text](../../img/claude-10.png)
+![alt text](../../img/claude-13.png)
 
 
 Option 1 : Yes, I trust this folder
