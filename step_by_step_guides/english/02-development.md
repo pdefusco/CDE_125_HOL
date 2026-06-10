@@ -293,9 +293,10 @@ curl -fsSL https://claude.ai/install.sh | bash
 ```
 
 Finally, add it to your path:
-
+Ask your instructor for API Key
 ```
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+#echo 'export ANTHROPIC_API_KEY="sk-ant-api03-CVKxxxxxx-xxxxx-ThA0QAA"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -305,23 +306,23 @@ Run the Claude CLI:
 claude
 ```
 
-![alt text](../../img/claude-3.png)
+![alt text](../../img/claude-10.png)
 
-And pick option 2 - Subscription
 
-![alt text](../../img/claude-4.png)
+Option 1 : Yes, I trust this folder
 
-Now follow the provided URL to obtain a Clade code, and then paste it  back in the prompt:
 
-![alt text](../../img/claude-5.png)
+And then use API key
 
-![alt text](../../img/claude-6.png)
 
-And finally, authorize access to this workspace.
+![alt text](../../img/claude-11.png)
 
-![alt text](../../img/claude-7.png)
 
-You are now in Claude's CLI prompt. As a test, ask it to "Explain the CDE CLI"
+You are now in Claude's CLI prompt. 
+
+![alt text](../../img/claude-12.png)
+
+As a test, ask it to "Explain the CDE CLI"
 
 ```
 Explain the CDE CLI.
