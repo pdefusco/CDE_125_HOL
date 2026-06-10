@@ -8,8 +8,7 @@ In this section you will learn about Job and Resource ACL's, Iceberg WAP and Ice
 
 1. [Lab 1: CDE Job and Resource ACLs](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/05-optional-labs.md#lab-1-cde-job-and-resource-acls).  
 2. [Lab 2: ICEBERG COMPACTION with Spark in CDE](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/05-optional-labs.md#lab-1-cde-job-and-resource-acls).
-3. [Lab 3: ICEBERG COMPACTION with Spark in CDE](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/05-optional-labs.md#lab-3-iceberg-wap-in-cloudera-data-engineering).
-4. test
+3. [Lab 3: Iceberg WAP in CDE](https://github.com/pdefusco/CDE_125_HOL/blob/main/step_by_step_guides/english/05-optional-labs.md#lab-3-iceberg-wap-in-cloudera-data-engineering).
 
 # Lab 1: CDE Job and Resource ACLs
 
